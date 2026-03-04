@@ -1,24 +1,44 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tollbooth</title>
-    <link rel="stylesheet" href="popup.css" />
-  </head>
-  <body>
-    <div class="card">
-      <div class="title">Tollbooth</div>
-      <div class="status" id="status">Loading…</div>
-      <label class="toggle">
-        <input id="enabledToggle" type="checkbox" />
-        <span>Protection enabled</span>
-      </label>
-      <div class="meta">
-        <span id="eventCount">0</span> events logged
-      </div>
-      <button id="dashboardBtn">Open Dashboard</button>
+<head>
+  <meta charset="UTF-8" />
+  <title>Tollbooth</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="logo">🛑 Tollbooth</div>
+    <div class="tagline">Your wallet's bodyguard.</div>
+
+    <div class="status-pill" id="statusPill">
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText">Loading...</span>
     </div>
-    <script src="popup.js"></script>
-  </body>
+
+    <label class="toggle-row">
+      <div class="toggle-label">Protection</div>
+      <div class="toggle-switch">
+        <input type="checkbox" id="enabledToggle" />
+        <span class="slider"></span>
+      </div>
+    </label>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="blockCount">0</div>
+        <div class="stat-label">Stopped this week</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-value" id="savedAmount">$0</div>
+        <div class="stat-label">Potentially saved</div>
+      </div>
+    </div>
+
+    <button id="dashboardBtn" class="dashboard-btn">View Dashboard →</button>
+
+    <div class="footer">Your future self thanks you 🙏</div>
+  </div>
+  <script src="popup.js"></script>
+</body>
 </html>

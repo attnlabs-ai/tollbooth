@@ -12,23 +12,36 @@ export function createModal({ html, cssText, data, onAction }) {
     if (el) el.textContent = value;
   }
 
-  setText("[data-tb='category']", data.category || "unknown");
-  setText("[data-tb='mode']", data.mode || "warn");
-  setText("[data-tb='friction']", String(data.frictionPercent || 0));
-  setText("[data-tb='cooldown']", String(data.cooldownHours || 24));
+  // Get funny message + emoji from categories (injected by content script)
+  const cats = window.TollboothCategories;
+  const category = data.category || "default";
+  const emoji = cats ? cats.getCategoryEmoji(category) : "🛑";
+  const headline = cats ? cats.getRandomMessage(category) : "Pump the brakes, champ.";
 
-  const frictionEl = overlay.querySelector("[data-tb-visible='friction']");
-  if (frictionEl) frictionEl.style.display = data.mode === "friction" ? "block" : "none";
+  setText("[data-tb='emoji']", emoji);
+  setText("[data-tb='headline']", headline);
+  setText("[data-tb='category']", category.replace(/_/g, " "));
+  setText("[data-tb='domain']", data.domain || "this site");
+  setText("[data-tb='friction']", String(data.frictionPercent || 100));
+  setText("[data-tb='count']", String(data.weeklyBlockCount || 0));
 
-  const cooldownEl = overlay.querySelector("[data-tb-visible='cooldown']");
-  if (cooldownEl) cooldownEl.style.display = data.mode === "cooldown" ? "block" : "none";
+  // Show friction note if mode is friction
+  const frictionNote = overlay.querySelector(".tb-friction-note");
+  if (frictionNote && data.mode === "friction") {
+    frictionNote.classList.add("visible");
+  }
+
+  // Hide cooldown button if not in cooldown mode
+  const cooldownBtn = overlay.querySelector("[data-action='cooldown']");
+  if (cooldownBtn && data.mode === "block") {
+    cooldownBtn.style.display = "none";
+  }
 
   overlay.addEventListener("click", (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLElement)) return;
+    const target = event.target.closest("[data-action]");
+    if (!target) return;
     const action = target.getAttribute("data-action");
-    if (!action) return;
-    onAction?.(action);
+    if (action) onAction?.(action);
   });
 
   return {

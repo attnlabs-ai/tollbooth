@@ -1,21 +1,28 @@
 <div class="tb-overlay" role="dialog" aria-modal="true">
   <div class="tb-card">
-    <div class="tb-header">Tollbooth</div>
-    <div class="tb-body">
-      <div class="tb-category">Category detected: <span data-tb="category"></span></div>
-      <div class="tb-mode">Mode: <span data-tb="mode"></span></div>
-      <div class="tb-friction" data-tb-visible="friction">
-        Friction cost: <strong><span data-tb="friction"></span>%</strong>
-      </div>
-      <div class="tb-cooldown" data-tb-visible="cooldown">
-        Cool-down: <strong><span data-tb="cooldown"></span> hours</strong>
-      </div>
-      <p class="tb-note">You can stop, wait, or continue. This moment is your choice.</p>
+    <div class="tb-emoji" data-tb="emoji">🛑</div>
+    <div class="tb-headline" data-tb="headline">Pump the brakes, champ.</div>
+    <div class="tb-subtext">
+      You're about to buy something in your <strong data-tb="category">flagged</strong> category on <span data-tb="domain">this site</span>.
+    </div>
+    <div class="tb-friction-note" data-tb-show="friction">
+      💸 Continuing will log a <strong data-tb="friction">100</strong>% friction charge.
     </div>
     <div class="tb-actions">
-      <button class="tb-btn tb-block" data-action="block">Block</button>
-      <button class="tb-btn tb-cooldown" data-action="cooldown">24hr Cool-down</button>
-      <button class="tb-btn tb-continue" data-action="continue">Continue</button>
+      <button class="tb-btn tb-btn-block" data-action="block">
+        <span class="tb-btn-icon">💪</span>
+        <span class="tb-btn-label">Nope, I'm good</span>
+      </button>
+      <button class="tb-btn tb-btn-cooldown" data-action="cooldown">
+        <span class="tb-btn-icon">🤔</span>
+        <span class="tb-btn-label">Give me 24 hours</span>
+      </button>
+      <button class="tb-btn tb-btn-continue" data-action="continue">
+        <span class="tb-btn-label">Fine, I'll do it 😤</span>
+      </button>
+    </div>
+    <div class="tb-shame">
+      You've been stopped <strong data-tb="count">0</strong> times this week. Keep going. 🔥
     </div>
   </div>
 </div>
