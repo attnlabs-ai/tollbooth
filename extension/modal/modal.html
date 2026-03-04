@@ -1,0 +1,21 @@
+<div class="tb-overlay" role="dialog" aria-modal="true">
+  <div class="tb-card">
+    <div class="tb-header">Tollbooth</div>
+    <div class="tb-body">
+      <div class="tb-category">Category detected: <span data-tb="category"></span></div>
+      <div class="tb-mode">Mode: <span data-tb="mode"></span></div>
+      <div class="tb-friction" data-tb-visible="friction">
+        Friction cost: <strong><span data-tb="friction"></span>%</strong>
+      </div>
+      <div class="tb-cooldown" data-tb-visible="cooldown">
+        Cool-down: <strong><span data-tb="cooldown"></span> hours</strong>
+      </div>
+      <p class="tb-note">You can stop, wait, or continue. This moment is your choice.</p>
+    </div>
+    <div class="tb-actions">
+      <button class="tb-btn tb-block" data-action="block">Block</button>
+      <button class="tb-btn tb-cooldown" data-action="cooldown">24hr Cool-down</button>
+      <button class="tb-btn tb-continue" data-action="continue">Continue</button>
+    </div>
+  </div>
+</div>

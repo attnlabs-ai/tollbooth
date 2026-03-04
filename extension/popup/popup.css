@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #111827;
+  color: #fff;
+  width: 260px;
+}
+
+.card {
+  padding: 16px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.status {
+  font-size: 13px;
+  margin-bottom: 12px;
+  color: #9ca3af;
+}
+
+.toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.meta {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+button {
+  margin-top: 12px;
+  width: 100%;
+  background: #10b981;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
